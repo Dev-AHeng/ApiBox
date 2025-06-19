@@ -1,0 +1,97 @@
+plugins {
+    alias(libs.plugins.androiLibrary)
+
+    id "com.google.protobuf" version "0.9.1"
+}
+
+// 确保dagger注解处理器正常工作
+tasks.withType(JavaCompile).configureEach {
+    options.annotationProcessorPath = configurations.annotationProcessor
+}
+
+android {
+    namespace 'my.zjh.model_sanhaiapi'
+    compileSdk 35
+
+    // 资源前缀防止冲突
+    resourcePrefix "sh_"
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    defaultConfig {
+        minSdk 26
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        // ARouter 配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':common')
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // ARouter路由
+    implementation(libs.arouter.api)
+    annotationProcessor(libs.arouter.compiler)
+
+    // 添加 Glide 依赖
+    implementation libs.glide
+    // 添加 Glide 的注解处理器依赖
+    annotationProcessor libs.compiler
+
+    // 键入数据存储（键入API表面，例如原始表面）
+    implementation "androidx.datastore:datastore:1.0.0"
+    // 可选-rxjava3支持
+    implementation "androidx.datastore:datastore-rxjava3:1.0.0"
+    // 生成器 lite版
+    implementation "com.google.protobuf:protobuf-javalite:3.21.12"
+
+}
+
+protobuf {
+    // 配置 protoc 编译器
+    protoc {
+        // 指定 protoc 编译器的 artifact
+        artifact = "com.google.protobuf:protoc:3.21.12"
+    }
+
+    // 配置生成 Proto 任务
+    generateProtoTasks {
+        all().each { task ->
+            // 设置生成 Java 代码的输出目录
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
+}

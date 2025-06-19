@@ -1,0 +1,182 @@
+plugins {
+    alias(libs.plugins.androiLibrary)
+}
+
+android {
+    namespace 'my.zjh.common'
+    compileSdk 35
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        minSdk 26
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        // ARouter 配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 暴露资源
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res']
+        }
+    }
+
+}
+
+// 在这里定义版本变量
+ext {
+    media3Version = "1.5.1"
+    retrofit2Version = "2.9.0"
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.window
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // 使用 androidx 版本
+    // api "androidx.multidex:multidex:2.0.1"
+
+    // 友盟基础组件库（所有友盟业务SDK都依赖基础组件库 必选）
+    //    api "com.umeng.umsdk:common:9.8.0"
+    //    // 必选
+    //    api "com.umeng.umsdk:asms:1.8.6"
+    //    // 高级运营分析功能依赖库，使用U-App卸载分析、开启反作弊能力请务必集成
+    //    // common需搭配v9.6.3及以上版本，asms需搭配v1.7.0及以上版本。需更新隐私声明
+    //    api "com.umeng.umsdk:uyumao:1.1.4"
+    //    // U-APM产品包依赖，必选
+    //    api "com.umeng.umsdk:apm:2.0.1"
+    //    // 友盟Push依赖
+    //    api "com.umeng.umsdk:push:6.7.1"
+    //    // 必选
+    //    api "com.umeng.umsdk:uverify:2.6.4"
+    //    // 必选
+    //    api "com.umeng.umsdk:uverify-main:2.2.3"
+    //    // 必选
+    //    api "com.umeng.umsdk:uverify-logger:2.2.2"
+    //    // AndroidX AppCompat库（最低版本）
+    //    api "androidx.appcompat:appcompat:1.3.1"
+    //    // 合规助手库，必选
+    //    api "com.umeng.umsdk:nns:1.1.0"
+
+    // ARouter, https://github.com/alibaba/ARouter
+    implementation(libs.arouter.api)
+    annotationProcessor(libs.arouter.compiler)
+
+    // https://github.com/lingochamp/okdownload/tree/master
+    api 'com.liulishuo.okdownload:okdownload:1.0.7'
+    // 如果需要断点续传功能
+    api 'com.liulishuo.okdownload:sqlite:1.0.7'
+    api 'com.liulishuo.okdownload:okhttp:1.0.7'
+
+
+    // Glide, https://github.com/bumptech/glide
+    api "com.github.bumptech.glide:glide:4.15.1"
+    // Glide注解处理器依赖
+    annotationProcessor "com.github.bumptech.glide:compiler:4.15.1"
+    // 添加OkHttp集成（推荐）
+    api 'com.github.bumptech.glide:okhttp3-integration:4.15.1'
+
+    // Gson解析容错(对应2.13.0的gson出错), 出处: https://github.com/getActivity/GsonFactory
+    api 'com.github.getActivity:GsonFactory:9.6'
+    // Kotlin 反射库：用于反射 Kotlin data class 类对象，1.5.10 请修改成当前项目 Kotlin 的版本号
+    api 'org.jetbrains.kotlin:kotlin-reflect:1.9.0'
+
+    // Logger, 出处: https://github.com/orhanobut/logger
+    api "com.orhanobut:logger:2.2.0"
+
+    // RxJava, 出处: https://github.com/ReactiveX/RxJava
+    api "io.reactivex.rxjava3:rxjava:3.1.5"
+    // RxAndroid, 出处: https://github.com/ReactiveX/RxAndroid
+    api "io.reactivex.rxjava3:rxandroid:3.0.0"
+
+    // Retrofit, https://github.com/square/retrofit
+    api "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    // Gson转换器
+    api "com.squareup.retrofit2:converter-gson:${retrofit2Version}"
+    // RxJava适配器
+    api "com.squareup.retrofit2:adapter-rxjava3:${retrofit2Version}"
+    // Logging Interceptor
+    api "com.squareup.okhttp3:logging-interceptor:4.9.3"
+
+    // Media3 ExoPlayer, https://developer.android.google.cn/media/implement/playback-app?hl=zh-cn
+    api "androidx.media3:media3-exoplayer:${media3Version}"
+    api "androidx.media3:media3-ui:${media3Version}"
+    api "androidx.media3:media3-common:${media3Version}"
+    api "androidx.media3:media3-session:${media3Version}"
+
+    // gson, https://github.com/google/gson
+    api 'com.google.code.gson:gson:2.10.1'
+
+    // lottie-android, https://github.com/airbnb/lottie-android
+    api 'com.airbnb.android:lottie:6.6.6'
+
+    // BaseRecyclerViewAdapterHelper(BRVAH), https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    api "io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4"
+
+    // FragmentationX, https://github.com/Liam6666/FragmentationX
+    api 'com.github.Liam6666:FragmentationX:1.0.2.3'
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    //    api 'com.github.getActivity:XXPermissions:21.2'
+    api 'com.github.getActivity:XXPermissions:23.0'
+
+    // 吐司框架, 出处: https://github.com/getActivity/Toaster
+    api "com.github.getActivity:Toaster:12.8"
+
+    // AgentWeb, 出处: https://github.com/Justson/AgentWeb?tab=readme-ov-file
+    api 'io.github.justson:agentweb-core:v5.1.1-androidx'
+    // (可选)
+    // implementation 'io.github.justson:agentweb-filechooser:v5.1.1-androidx'
+    // (可选)
+    // implementation 'com.github.Justson:Downloader:v5.0.4-androidx'
+
+    // 网络请求框架：https://github.com/getActivity/EasyHttp
+    // implementation 'com.github.getActivity:EasyHttp:13.0'
+
+    // BRV, 出处: https://github.com/liangjingkanji/BRV?tab=readme-ov-file
+    // implementation 'com.github.liangjingkanji:BRV:1.6.1'
+
+    // RxBinding 库 (根据你使用的版本选择)
+    // implementation 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
+
+    // AndroidX Lifecycle
+    // implementation "androidx.lifecycle:lifecycle-runtime:2.8.7"
+
+    // (很卡) lottiefiles, https://github.com/LottieFiles/dotlottie-android
+    // implementation "com.github.LottieFiles:dotlottie-android:0.6.2"
+
+    // logger日志
+    // implementation(libs.logger)
+    // implementation 'com.orhanobut:logger:2.2.0'
+
+    // lombok, 需要配合插件
+    // compileOnly 'org.projectlombok:lombok:1.18.24'
+    // annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}

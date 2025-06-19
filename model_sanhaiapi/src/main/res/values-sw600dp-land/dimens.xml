@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 横屏平板设备的文本尺寸 -->
+    <dimen name="text_micro">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxlarge">24sp</dimen>
+    
+    <!-- 横屏平板设备的边距，更大的水平边距 -->
+    <dimen name="spacing_xxsmall">4dp</dimen>
+    <dimen name="spacing_xsmall">6dp</dimen>
+    <dimen name="spacing_small">12dp</dimen>
+    <dimen name="spacing_medium">18dp</dimen>
+    <dimen name="spacing_large">28dp</dimen>
+    <dimen name="spacing_xlarge">36dp</dimen>
+    <dimen name="spacing_xxlarge">48dp</dimen>
+    
+    <!-- 横屏平板设备的组件尺寸 -->
+    <dimen name="icon_small">24dp</dimen>
+    <dimen name="icon_medium">32dp</dimen>
+    <dimen name="icon_large">40dp</dimen>
+    <dimen name="chip_height">40dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="button_corner_radius">20dp</dimen>
+    <dimen name="toolbar_height">64dp</dimen>
+</resources> 

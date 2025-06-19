@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:behavior_expandedOffset="0dp"
+    app:behavior_hideable="true"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <!-- 拖动手柄视图 -->
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetDragHandleView$Behavior"
+            android:contentDescription="拖动手柄"/>
+        
+        <!-- 第二部分：主要内容区域 -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="12dp"
+            android:text="请选择打开方式"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+        
+        <LinearLayout
+            android:id="@+id/content_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="com.chad.library.adapter4.layoutmanager.QuickGridLayoutManager"
+                app:spanCount="4"
+                tools:listitem="@layout/gg_item_bottom" />
+        
+        </LinearLayout>
+    
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

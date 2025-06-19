@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- 对话框主题 -->
+    <style name="sh_AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 保持状态栏和导航栏不受影响 -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <!-- 圆形图像样式 -->
+    <style name="sh_circleImageView">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <!-- 底部弹窗样式 -->
+    <style name="sh_BottomSheetDialogStyle" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/sh_RoundedBottomSheetStyle</item>
+    </style>
+
+    <style name="sh_RoundedBottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/sh_RoundedBottomSheetShapeOverlay</item>
+    </style>
+
+    <style name="sh_RoundedBottomSheetShapeOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+    
+    <!-- 皮肤Chip样式 -->
+    <style name="sh_SkinChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipCornerRadius">16dp</item>
+        <item name="chipBackgroundColor">@color/colorAccent</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="chipMinTouchTargetSize">32dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    
+    
+    
+    <!-- 定义一个名为MyCustomTextStyle的样式 -->
+    <style name="sh_iconBtn">
+        <!-- 设置文本颜色为#2563EB -->
+        <item name="android:textColor">#2563EB</item>
+        <!-- 设置文本大小，使用@dimen/text_large引用定义的尺寸 -->
+        <item name="android:textSize">@dimen/text_large</item>
+        <!-- 设置文本样式为粗体 -->
+        <item name="android:textStyle">bold</item>
+        <!-- 设置状态列表动画为null，即不使用任何动画效果 -->
+        <item name="android:stateListAnimator">@null</item>
+        <!-- 设置背景为@drawable/sh_suibowen引用的图片 -->
+        <item name="android:background">@drawable/suibowen_qianlan</item>
+        <!-- 设置DrawablePadding为4dp，即Drawable和文本之间的间距 -->
+        <item name="android:drawablePadding">4dp</item>
+        <!-- 设置paddingStart为12dp，即开始处的内边距 -->
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <!-- 对话框动画样式 -->
+    <style name="sh_DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+    
+    <!--蓝色icon圆角按钮-->
+    <style name="BlueBtn" >
+        <item name="android:background">@drawable/suibowen_senlan</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_xlarge</item>
+        <item name="android:drawableTint">@android:color/white</item>
+        <item name="android:drawablePadding">5dp</item>
+        <!--等距字体-->
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+</resources> 

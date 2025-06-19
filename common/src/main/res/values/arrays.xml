@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- IP地址查询API优先级选项 -->
+    <string-array name="api_priority_options">
+        <item>所有API（默认）</item>
+        <item>Vore API（优先级1）</item>
+        <item>IP-API（优先级2）</item>
+        <item>百度API（优先级3）</item>
+        <item>IP-Info（优先级4）</item>
+    </string-array>
+    
+    <!-- IP地址查询API优先级值 -->
+    <integer-array name="api_priority_values">
+        <item>0</item>  <!-- 所有API -->
+        <item>1</item>  <!-- Vore API -->
+        <item>2</item>  <!-- IP-API -->
+        <item>3</item>  <!-- 百度API -->
+        <item>4</item>  <!-- IP-Info -->
+    </integer-array>
+</resources> 

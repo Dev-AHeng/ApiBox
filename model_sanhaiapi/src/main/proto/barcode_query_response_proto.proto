@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "my.zjh.box";
+option java_multiple_files = true;
+
+message BarcodeQueryResponseProto {
+    int32 code = 1;
+    string msg = 2;
+    GoodsData data = 3;
+
+    message GoodsData {
+        string goods_name = 1;
+        string barcode = 2;
+        string price = 3;
+        string brand = 4;
+        string supplier = 5;
+        string standard = 6;
+    }
+}

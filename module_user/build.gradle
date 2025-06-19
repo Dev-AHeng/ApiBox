@@ -1,0 +1,64 @@
+plugins {
+    alias(libs.plugins.androiLibrary)
+}
+
+android {
+    namespace = "my.zjh.user"
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 26
+
+        // 资源前缀防止冲突
+        resourcePrefix "user_"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // ARouter 配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // arguments = [AROUTER_MODULE_NAME: "module_user"]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':common')
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // ARouter路由
+    implementation(libs.arouter.api)
+    annotationProcessor(libs.arouter.compiler)
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">山海API</string>
+    
+    <!-- API列表页面 -->
+    <string name="action_search">搜索</string>
+    <string name="action_help">帮助</string>
+    <string name="action_settings">设置</string>
+    <string name="action_refresh">刷新</string>
+    
+    <!-- API卡片 -->
+    <string name="call_count_format">调用次数: %d</string>
+    <string name="update_time_format">更新时间: %s</string>
+    <string name="btn_retry">重试</string>
+    <string name="btn_refresh">刷新</string>
+    <string name="error_loading">加载失败，请检查网络连接</string>
+    <string name="empty_api_list">暂无可用API</string>
+    
+    <!-- 对话框 -->
+    <string name="dialog_help_title">关于山海API</string>
+    <string name="dialog_help_message">山海API提供多种实用接口，方便开发者快速集成各类功能。\n\n使用说明：\n1. 点击API卡片查看详细信息\n2. 右下角按钮获取更多帮助\n3. 下拉可刷新API列表</string>
+    <string name="dialog_btn_ok">确定</string>
+    <string name="dialog_btn_cancel">取消</string>
+</resources>

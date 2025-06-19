@@ -1,0 +1,44 @@
+<resources>
+    
+    <style name="gg_BottomSheetDialog"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <!-- 设置窗口背景为透明 -->
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+    <!--md3-->
+    <!--    <style name="gg_BottomSheetDialog" parent="Theme.Material3.Light.BottomSheetDialog">-->
+    <!--        &lt;!&ndash; 设置窗口背景为透明 &ndash;&gt;-->
+    <!--        <item name="android:colorBackground">@android:color/transparent</item>-->
+    <!--    </style>-->
+    
+    <!-- 底部表单拖动手柄样式 -->
+    <style name="gg_CustomBottomSheetDragHandleStyle"
+        parent="Widget.Material3.BottomSheet.DragHandle">
+        <!--        <item name="android:background">@color/bottom_sheet_drag_handle</item>-->
+        <item name="tint">@color/white</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+    
+    
+    <!--    <style name="ModalBottomSheet" parent="Widget.Material3.BottomSheet.Modal">-->
+    <!--        &lt;!&ndash; Apply attributes here &ndash;&gt;-->
+    <!--    </style>-->
+    <!--    -->
+    <!--    <style name="ModalBottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">-->
+    <!--        <item name="bottomSheetStyle">@style/ModalBottomSheet</item>-->
+    <!--    </style>-->
+    <!--    -->
+    
+    
+    <style name="gg_CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>  <!-- 关键：设置为50%形成正圆 -->
+    </style>
+    
+    
+<!--    <style name="gg_MyMaterialDialog" parent="MaterialAlertDialog">-->
+<!--        &lt;!&ndash; 你可以自定义颜色、圆角等 &ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.MaterialAlertDialog.Rounded</item>&ndash;&gt;-->
+<!--    </style>-->
+    
+</resources>

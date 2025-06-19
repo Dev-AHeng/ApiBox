@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    
+    <!-- 工具栏 -->
+    <include
+        android:id="@+id/gg_toolbar_layout"
+        layout="@layout/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/ba"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".view.ipquery1.activity.IPQuery1Activity">
+            
+            <!-- IP地址输入卡片 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true">
+                
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_ip_address"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入IP地址"
+                        app:endIconMode="clear_text"
+                        app:helperText="必填项，例如：192.168.1.1"
+                        app:helperTextEnabled="true"
+                        app:startIconDrawable="@drawable/ic_computer_24">
+                        
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_ip_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    
+                    <!-- 查询按钮 -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_query"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="16dp"
+                        android:text="查询IP地址信息"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        app:cornerRadius="8dp"
+                        app:iconSize="24dp"
+                        app:icon="@drawable/search_24px"
+                        app:iconGravity="textStart" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+            
+            <!-- 查询结果卡片 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:cardUseCompatPadding="true"
+                tools:visibility="visible">
+                
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    
+                    <!-- 结果标题 -->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="查询结果"
+                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                        android:textColor="?attr/colorPrimary" />
+                    
+                    <!-- IP地址信息 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="IP地址："
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                            android:textStyle="bold" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id= "@+id/tv_ip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 位置信息分组 -->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="位置信息"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                    
+                    <!-- 洲 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="洲："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_continent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 国家 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="国家："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 省份 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="省份："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_province"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 城市 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="城市："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 区域 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="区域："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 运营商 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="运营商："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_carrier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 坐标信息分组 -->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="坐标信息"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                    
+                    <!-- 经纬度 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="经纬度："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_coordinates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 行政区划代码 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="区划代码："
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                        
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_division"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:textIsSelectable="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+            
+            <!-- 状态显示卡片 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true"
+                tools:visibility="visible">
+                
+                <!-- 错误提示区域 -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_error_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorErrorContainer"
+                    android:drawableStart="@drawable/ic_error_24"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="?attr/colorOnErrorContainer"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textColor="?attr/colorOnErrorContainer"
+                    android:visibility="gone"
+                    tools:text="这是一个错误消息示例"
+                    tools:visibility="visible" />
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

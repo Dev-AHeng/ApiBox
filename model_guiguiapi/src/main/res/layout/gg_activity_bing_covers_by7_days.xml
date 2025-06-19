@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    
+    <!-- 工具栏 -->
+    <include
+        android:id="@+id/gg_toolbar_layout"
+        layout="@layout/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/ba"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".view.bingcoversby7days.activity.BingCoversBy7DaysActivity">
+            
+            <!-- 操作区域卡片 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true">
+                
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    
+                    <!-- 标题说明 -->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="获取必应近7天精美封面图片"
+                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                        android:textColor="?attr/colorPrimary" />
+                    
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="点击下方按钮获取最新的必应每日精选壁纸，包含多种分辨率下载"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+                    
+                    <!-- 获取图片按钮 -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGetImages"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="获取近7天封面图片"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textStyle="bold"
+                        app:cornerRadius="8dp"
+                        app:icon="@drawable/image_search_24px"
+                        app:iconGravity="textStart"
+                        app:iconSize="24dp" />
+                
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            
+            </com.google.android.material.card.MaterialCardView>
+            
+            <!-- 图片列表区域 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvImageList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:cardUseCompatPadding="true"
+                tools:visibility="visible">
+                
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    
+                    <!-- 列表标题 -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="图片列表"
+                            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                            android:textColor="?attr/colorPrimary" />
+                        
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvImageCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="4dp"
+                            android:gravity="center_vertical"
+                            android:textAppearance="?attr/textAppearanceLabelMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            app:drawableStartCompat="@drawable/filter_24px"
+                            tools:text="共7张图片" />
+                    
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    
+                    <!-- 图片列表 -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewImages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/gg_item_bing_image" />
+                
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            
+            </com.google.android.material.card.MaterialCardView>
+            
+            <!-- 状态显示卡片 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true"
+                tools:visibility="visible">
+                
+                <!-- 错误提示区域 -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvErrorMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorErrorContainer"
+                    android:drawableStart="@drawable/ic_error_24"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="?attr/colorOnErrorContainer"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnErrorContainer"
+                    android:visibility="gone"
+                    tools:text="这是一个错误消息示例"
+                    tools:visibility="visible" />
+            
+            </com.google.android.material.card.MaterialCardView>
+        
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

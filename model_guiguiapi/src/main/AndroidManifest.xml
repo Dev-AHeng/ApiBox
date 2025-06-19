@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <application
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.bingcoversby7days.activity.BingCoversBy7DaysActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.bingcoversby7days.activity.ImageViewerActivity"
+            android:exported="false"/>
+   
+        <activity
+            android:name=".view.websitetdk.activity.WebsiteTDKActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ipquery1.activity.IPQuery1Activity"
+            android:exported="false" /> <!-- FileProvider for sharing files -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+        
+        <activity
+            android:name=".view.qrcodegeneration.activity.QRCodeGenerationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.hotsearch.activity.HotSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.activity.GuiGuiMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.douyinvideoanalysis.activity.DouYinVideoAnalysisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.browser.activity.BrowserActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

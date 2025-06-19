@@ -1,0 +1,10 @@
+{
+    // 设置窗口缩放级别为1.15
+    "window.zoomLevel": 1.15,
+    // 设置编辑器字体大小为15
+    "editor.fontSize": 15,
+    // 设置编辑器行高为21
+    "editor.lineHeight": 21,
+    // 控制树形结构缩进的像素值
+    "workbench.tree.indent": 12,
+}

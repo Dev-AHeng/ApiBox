@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 前台服务权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    
+    <application
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.BarcodeQueryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.WangZheHeroStrengthRankingQueryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.random_anime_diagram.RandomAnimeDiagramActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.QQAccountInformationActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.ICPFilingInquiryActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.OneSentenceActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.QueryLocalIPAddressActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.IPAddressQueryActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.MiguMusicVipActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.AggregateShortVideoAnalysisActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" />
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="false"
+            android:theme="@style/sh_AppTheme" /> <!-- 音乐播放服务 -->
+        <service
+            android:name=".service.MusicPlayerService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" /> <!-- 音乐控制广播接收器 -->
+        <receiver
+            android:name=".receiver.MusicControlReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="my.zjh.model_sanhaiapi.ACTION_MUSIC_CONTROL" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

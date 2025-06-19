@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_transform_mode"
+        android:title="旋转镜像"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_transform_normal"
+                    android:title="正常显示"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/menu_transform_horizontal"
+                    android:title="左右镜像" />
+                <item
+                    android:id="@+id/menu_transform_vertical"
+                    android:title="上下镜像" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_scale_mode"
+        android:title="显示比例"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_scale_default"
+                    android:title="默认比例"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/menu_scale_16_9"
+                    android:title="16:9" />
+                <item
+                    android:id="@+id/menu_scale_4_3"
+                    android:title="4:3" />
+                <item
+                    android:id="@+id/menu_scale_full"
+                    android:title="全屏" />
+                <item
+                    android:id="@+id/menu_scale_match_full"
+                    android:title="拉伸全屏" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_filter_mode"
+        android:title="滤镜效果"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_filter_none"
+                    android:title="无效果"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/menu_filter_auto_fix"
+                    android:title="自动修复效果" />
+                <item
+                    android:id="@+id/menu_filter_pixelation"
+                    android:title="像素化效果" />
+                <item
+                    android:id="@+id/menu_filter_black_white"
+                    android:title="黑白效果" />
+                <item
+                    android:id="@+id/menu_filter_contrast"
+                    android:title="对比度效果" />
+                <item
+                    android:id="@+id/menu_filter_cross_process"
+                    android:title="交叉处理效果" />
+                <item
+                    android:id="@+id/menu_filter_documentary"
+                    android:title="纪录片效果" />
+                <item
+                    android:id="@+id/menu_filter_duotone"
+                    android:title="双色调效果" />
+                <item
+                    android:id="@+id/menu_filter_fill_light"
+                    android:title="补光效果" />
+                <item
+                    android:id="@+id/menu_filter_gamma"
+                    android:title="伽马校正效果" />
+                <item
+                    android:id="@+id/menu_filter_grain"
+                    android:title="颗粒效果" />
+                <item
+                    android:id="@+id/menu_filter_hue"
+                    android:title="色调效果" />
+                <item
+                    android:id="@+id/menu_filter_invert"
+                    android:title="反色效果" />
+                <item
+                    android:id="@+id/menu_filter_lamoish"
+                    android:title="老旧照片效果" />
+                <item
+                    android:id="@+id/menu_filter_posterize"
+                    android:title="海报化效果" />
+                <item
+                    android:id="@+id/menu_filter_barrel_blur"
+                    android:title="桶形模糊效果" />
+                <item
+                    android:id="@+id/menu_filter_saturation"
+                    android:title="饱和度效果" />
+                <item
+                    android:id="@+id/menu_filter_sepia"
+                    android:title="怀旧效果" />
+                <item
+                    android:id="@+id/menu_filter_sharpness"
+                    android:title="锐化效果" />
+                <item
+                    android:id="@+id/menu_filter_temperature"
+                    android:title="色温效果" />
+                <item
+                    android:id="@+id/menu_filter_tint"
+                    android:title="色调效果(绿色)" />
+                <item
+                    android:id="@+id/menu_filter_vignette"
+                    android:title="暗角效果" />
+                <item
+                    android:id="@+id/menu_filter_overlay"
+                    android:title="叠加效果" />
+                <item
+                    android:id="@+id/menu_filter_simple_blur"
+                    android:title="简单模糊效果" />
+                <item
+                    android:id="@+id/menu_filter_gaussian_blur"
+                    android:title="高斯模糊效果" />
+                <item
+                    android:id="@+id/menu_filter_brightness"
+                    android:title="亮度效果" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_decode_mode"
+        android:title="解码模式"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_hardware_decode"
+                    android:title="硬解码" />
+                <item
+                    android:id="@+id/menu_software_decode"
+                    android:title="软解码" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_playback_speed"
+        android:title="播放速度"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_speed_4_0"
+                    android:title="4.0x" />
+                <item
+                    android:id="@+id/menu_speed_3_0"
+                    android:title="3.0x" />
+                <item
+                    android:id="@+id/menu_speed_2_5"
+                    android:title="2.5x" />
+                <item
+                    android:id="@+id/menu_speed_2_0"
+                    android:title="2.0x" />
+                <item
+                    android:id="@+id/menu_speed_1_75"
+                    android:title="1.75x" />
+                <item
+                    android:id="@+id/menu_speed_1_5"
+                    android:title="1.5x" />
+                <item
+                    android:id="@+id/menu_speed_1_25"
+                    android:title="1.25x" />
+                <item
+                    android:id="@+id/menu_speed_1_0"
+                    android:title="1.0x"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/menu_speed_0_75"
+                    android:title="0.75x" />
+                <item
+                    android:id="@+id/menu_speed_0_5"
+                    android:title="0.5x" />
+                <item
+                    android:id="@+id/menu_speed_0_25"
+                    android:title="0.25x" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_reset_scale"
+        android:title="重置缩放"
+        app:showAsAction="never" />
+</menu> 

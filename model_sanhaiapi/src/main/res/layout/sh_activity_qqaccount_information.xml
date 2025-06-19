@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.QQAccountInformationActivity">
+    
+    <!-- 工具栏 -->
+    <include
+        android:id="@+id/sh_toolbar_layout"
+        layout="@layout/sh_toolbar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <!-- 搜索卡片 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sh_toolbar_layout">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+            
+            <!-- QQ号码输入框 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/qq_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="输入QQ号码"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/qq_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionSearch"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:text="1919196455" />
+            </com.google.android.material.textfield.TextInputLayout>
+            
+            <!-- 粘贴按钮 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/paste_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="粘贴"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toStartOf="@id/query_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/qq_input_layout" />
+            
+            <!-- 查询按钮 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/query_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="查询"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/paste_button"
+                app:layout_constraintTop_toBottomOf="@id/qq_input_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    
+    <!-- 加载进度条 -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_card"
+        tools:visibility="visible" />
+    
+    <!-- 结果卡片 -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/result_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_card"
+        tools:visibility="visible">
+        
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/result_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+                
+                <!-- 主头像 (640x640) -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/avatar_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="?attr/selectableItemBackground"
+                    
+                    
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/sh_circleImageView" />
+                
+                <!-- QQ号 -->
+                <TextView
+                    android:id="@+id/qq_number_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="QQ号:"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/avatar_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+                
+                <TextView
+                    android:id="@+id/qq_number_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    
+                    
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/qq_number_label"
+                    app:layout_constraintTop_toTopOf="@id/qq_number_label"
+                    tools:text="1919196455" />
+                
+                <!-- 昵称 -->
+                <TextView
+                    android:id="@+id/name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="昵称:"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/avatar_image"
+                    app:layout_constraintTop_toBottomOf="@id/qq_number_text" />
+                
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    
+                    
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/name_label"
+                    app:layout_constraintTop_toTopOf="@id/name_label"
+                    tools:text="Aa啊亨" />
+                
+                <!-- 邮箱 -->
+                <TextView
+                    android:id="@+id/email_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="邮箱:"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/avatar_image"
+                    app:layout_constraintTop_toBottomOf="@id/name_text" />
+                
+                <TextView
+                    android:id="@+id/email_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    
+                    
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/email_label"
+                    app:layout_constraintTop_toTopOf="@id/email_label"
+                    tools:text="1919196455@qq.com" />
+                
+                <!-- 分割线 -->
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatar_image" />
+                
+                <!-- QQ空间链接 -->
+                <TextView
+                    android:id="@+id/qzone_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="QQ空间:"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
+                
+                <TextView
+                    android:id="@+id/qzone_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    
+                    
+                    android:textColor="@color/design_default_color_primary"
+                    
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/qzone_label"
+                    app:layout_constraintTop_toTopOf="@id/qzone_label"
+                    tools:text="https://user.qzone.qq.com/1919196455" />
+                
+                <!-- 圆形/方形头像切换开关 -->
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/avatar_shape_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:checked="true"
+                    android:text="圆形头像"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/qzone_text" />
+                
+                <!-- 头像展示区域标题 -->
+                <TextView
+                    android:id="@+id/avatars_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="各尺寸头像"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatar_shape_switch" />
+                
+                <!-- 头像容器（横向滚动） -->
+                <HorizontalScrollView
+                    android:id="@+id/avatars_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatars_title">
+                    
+                    <LinearLayout
+                        android:id="@+id/avatars_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp">
+                        
+                        <!-- 40x40头像 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/avatar_image_40"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackground"
+                                
+                                
+                                android:scaleType="centerCrop"
+                                app:shapeAppearanceOverlay="@style/sh_circleImageView" />
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="40x40"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                        
+                        <!-- 100x100头像 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/avatar_image_100"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:background="?attr/selectableItemBackground"
+                                
+                                
+                                android:scaleType="centerCrop"
+                                app:shapeAppearanceOverlay="@style/sh_circleImageView" />
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="100x100"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                        
+                        <!-- 140x140头像 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/avatar_image_140"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="?attr/selectableItemBackground"
+                                
+                                
+                                android:scaleType="centerCrop"
+                                app:shapeAppearanceOverlay="@style/sh_circleImageView" />
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="140x140"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                        
+                        <!-- 640x640头像 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/avatar_image_640"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="?attr/selectableItemBackground"
+                                
+                                
+                                android:scaleType="centerCrop"
+                                app:shapeAppearanceOverlay="@style/sh_circleImageView" />
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="640x640"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+                
+                <!-- 头像链接面板（改进版） -->
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintTop_toBottomOf="@id/avatars_scroll">
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="头像链接"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    
+                    <!-- 40x40头像链接 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="40x40头像:"
+                        android:textStyle="bold" />
+                    
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:endIconContentDescription="复制链接"
+                        app:endIconDrawable="@android:drawable/ic_menu_send"
+                        app:endIconMode="custom">
+                        
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/avatar_40_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    
+                    <!-- 100x100头像链接 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="100x100头像:"
+                        android:textStyle="bold" />
+                    
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:endIconContentDescription="复制链接"
+                        app:endIconDrawable="@android:drawable/ic_menu_send"
+                        app:endIconMode="custom">
+                        
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/avatar_100_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    
+                    <!-- 140x140头像链接 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="140x140头像:"
+                        android:textStyle="bold" />
+                    
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:endIconContentDescription="复制链接"
+                        app:endIconDrawable="@android:drawable/ic_menu_send"
+                        app:endIconMode="custom">
+                        
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/avatar_140_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    
+                    <!-- 640x640头像链接 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="640x640头像:"
+                        android:textStyle="bold" />
+                    
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:endIconContentDescription="复制链接"
+                        app:endIconDrawable="@android:drawable/ic_menu_send"
+                        app:endIconMode="custom">
+                        
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/avatar_640_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textSize="13sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
+    
+    <!-- 错误信息 -->
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_card"
+        tools:text="查询失败，请稍后重试"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

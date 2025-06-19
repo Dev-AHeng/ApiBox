@@ -1,0 +1,13 @@
+<!-- res/drawable/sh_suibowen.xml -->
+<!--ripple-->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight"> <!-- 水波纹颜色 -->
+    
+    <item>
+        <shape>
+            <solid android:color="#3B82F6" /> <!-- 默认背景颜色 -->
+            <corners android:radius="12dp" /> <!-- 圆角 -->
+        </shape>
+    </item>
+
+</ripple>

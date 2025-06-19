@@ -1,0 +1,31 @@
+<project version="4">
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="com.hjq.http.annotation.HttpRename" />
+    </list>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="zulu-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+    <option name="showRenderedDocs" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\heng\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="1.0" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

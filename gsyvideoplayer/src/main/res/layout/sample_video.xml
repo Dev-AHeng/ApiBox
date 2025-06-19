@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <FrameLayout
+        android:id="@+id/surface_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    
+    <!--封面-->
+    <RelativeLayout
+        android:id="@+id/thumb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        
+        <!--封面图片-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thumbImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/video_title_bg"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="返回"
+            android:paddingStart="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/arrow_back_24px"
+            android:tooltipText="返回"
+            tools:ignore="RtlSymmetry" />
+        
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingStart="8dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:text="标题" />
+        
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="更多选项"
+            android:scaleType="centerInside"
+            android:tooltipText="更多选项"
+            android:visibility="gone"
+            app:srcCompat="@drawable/baseline_more_vert_24"
+            tools:visibility="visible" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#99000000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+        
+        <TextView
+            android:id="@+id/current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@android:color/white" />
+        
+        <SeekBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal.Custom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:max="100"
+            android:paddingVertical="8dp"
+            android:progressBackgroundTint="#30FFFFFF"
+            android:progressTint="#FFFFFF"
+            android:secondaryProgressTint="#80FFFFFF"
+            android:thumbTint="#FFFFFF" />
+        
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="00:00"
+            android:textColor="@android:color/white" />
+        
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/play_controller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="播放/暂停"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:tooltipText="播放/暂停"
+            app:srcCompat="@drawable/baseline_play_arrow_24" />
+        
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/rotate_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="旋转90度"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:tooltipText="旋转90度"
+            app:srcCompat="@drawable/baseline_rotate_90_degrees_cw_24" />
+        
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fullbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="全屏"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:tooltipText="全屏"
+            app:srcCompat="@drawable/baseline_fit_screen_v_24" />
+    </LinearLayout>
+    
+    <!--隐藏控制条时 显示的进度条-->
+    <ProgressBar
+        android:id="@+id/bottom_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="1.5dp"
+        android:max="100"
+        android:progressBackgroundTint="#424242"
+        android:progressTint="#FFFFFF"
+        android:secondaryProgressTint="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/video_dialog_progress_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+        
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="加载中..."
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/play_controller_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/video_dialog_progress_bg"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_play_arrow_64" />
+    
+    <ImageView
+        android:id="@+id/lock_screen"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="锁定屏幕"
+        android:scaleType="centerInside"
+        android:tooltipText="锁定屏幕"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+    
+    
+    <RelativeLayout
+        android:id="@+id/preview_layout"
+        android:layout_width="@dimen/seek_bar_image"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/layout_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+    
+    <TextView
+        android:id="@+id/speed_tip_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/video_dialog_progress_bg"
+        android:gravity="center"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="16dp"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2.0倍速"
+        tools:visibility="visible" />
+    
+    <!-- 左侧快退水波纹效果 -->
+    <View
+        android:id="@+id/left_ripple_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ripple_effect_right"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        tools:visibility="visible" />
+    
+    <!-- 右侧快进水波纹效果 -->
+    <View
+        android:id="@+id/right_ripple_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ripple_effect"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        tools:visibility="visible" />
+
+    <!-- 播放完毕布局 -->
+    <LinearLayout
+        android:id="@+id/layout_play_complete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:clickable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 播放完毕提示 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_play_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="播放完毕"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- 重新播放按钮 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_replay"
+            app:cornerRadius="8dp"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新播放"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

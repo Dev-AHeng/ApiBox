@@ -1,0 +1,14 @@
+<resources>
+    <!--一定要写 因为arouter要获取-->
+    <string name="app_name">model_guiguiapi</string>
+    <string name="gg_titletest">鬼鬼api(白天)</string>
+    
+    <!-- 二维码生成相关字符串 -->
+    <string-array name="error_correction_levels">
+        <item>L (低)</item>
+        <item>M (中)</item>
+        <item>Q (高)</item>
+        <item>H (最高)</item>
+    </string-array>
+
+</resources>

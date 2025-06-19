@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.WangZheHeroStrengthRankingQueryActivity">
+    
+    <!-- 工具栏 -->
+    <include
+        android:id="@+id/sh_toolbar_layout"
+        layout="@layout/sh_toolbar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <!-- 筛选器 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sh_toolbar_layout">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="英雄类型"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+                
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_hero_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="全部" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_warrior"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="战士" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_mage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="法师" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_tank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="坦克" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_assassin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="刺客" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_shooter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="射手" />
+                    
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_support"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="辅助" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    
+    <!-- 英雄列表 -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_filter">
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_heroes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:scrollbarSize="6dp"
+            android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
+            android:scrollbarTrackVertical="@drawable/scrollbar_track"
+            android:fadingEdge="none"
+            android:scrollbarStyle="outsideOverlay"
+            android:fastScrollEnabled="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/sh_item_hero_rank" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    
+    <!-- 加载中 -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_filter"
+        tools:visibility="visible" />
+    
+    <!-- 错误提示 -->
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_filter"
+        tools:visibility="visible">
+        
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="错误图标"
+            android:src="@android:drawable/ic_dialog_alert" />
+        
+        <TextView
+            android:id="@+id/text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            tools:text="加载失败，请检查网络连接" />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="重试" />
+    </LinearLayout>
+    
+    <!-- 回到顶部的FAB按钮 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="回到顶部"
+        android:src="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>

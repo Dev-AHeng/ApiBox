@@ -1,0 +1,11 @@
+<!-- 定义一个圆角矩形形状 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 设置圆角半径，这里四个角都是8dp -->
+    <corners android:radius="8dp" />
+    <!-- 初始颜色设置为透明，后续代码中动态修改 -->
+    <solid android:color="@android:color/transparent" />
+    <!-- 可选：添加边框 -->
+    <stroke
+        android:width="1dp"
+        android:color="#888888" />
+</shape>
