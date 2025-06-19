@@ -127,14 +127,6 @@ cd ApiBox
 - 项目地址: [https://github.com/Dev-AHeng/ApiBox](https://github.com/Dev-AHeng/ApiBox)
 - 问题反馈: [Issues](https://github.com/Dev-AHeng/ApiBox/issues)
 
-## 更新日志
-
-### v1.0.0 (2024-12-19)
-- 🎉 初始版本发布
-- ✨ 完整的模块化架构
-- 🚀 多种API功能集成
-- 📱 Material Design 3 UI
-
 ## 致谢
 
 感谢所有为这个项目做出贡献的开发者和提供API服务的平台。
